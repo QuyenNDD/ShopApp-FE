@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { RegisterDTO } from '../dtos/users/register.dto';
 import { LoginDTO } from '../dtos/users/login.dto';
 import { environment } from '../enviroments/enviroment';
+import { HttpUtilService } from './http.util.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,9 @@ export class UserService {
   private apiConfig = {
     headers: this.createHeaders()
   }
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private httpUtilService: HttpUtilService
+  ) { }
   private createHeaders(): HttpHeaders {
     return new HttpHeaders({
       'Content-Type': 'application/json',
